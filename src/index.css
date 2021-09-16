@@ -18,14 +18,8 @@ code {
 .container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
 }
 .card {
-  margin: 10px;
-  margin-bottom: 10px;
-}
-.icons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: auto;
+  margin: 10px 0;
 }

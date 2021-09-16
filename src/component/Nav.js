@@ -1,8 +1,8 @@
-const Nav = () => {
+const Nav = ({setSearch,searchValue}) => {
     return ( 
         <nav className="navbar container navbar-expand-lg navbar-dark bg-primary">
   <div className="container-fluid">
-    <a className="navbar-brand" href="#">Movie App</a>
+    <a className="navbar-brand" href="#">Cinematic</a>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
@@ -15,14 +15,13 @@ const Nav = () => {
           <a className="nav-link" href="#">About</a>
         </li>
       </ul>
-      <form className="d-flex">
-        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-        <button className="btn btn-outline-success" type="submit">Search</button>
+      <form onSubmit={searchValue} className="d-flex">
+        <input onChange={(e) => setSearch(e.target.value)} className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+        <button className="btn btn-primary" type="submit">Search</button>
       </form>
     </div>
   </div>
 </nav>
      );
 }
- 
 export default Nav;
