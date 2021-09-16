@@ -21,7 +21,10 @@ code {
   justify-content: space-between;
 }
 .card {
-  margin: 10px 0;
+  margin: 5px 0;
+  box-shadow: 10px 10px 5px -5px rgba(0, 0, 0, 0.18);
+  -webkit-box-shadow: 10px 10px 5px -5px rgba(0, 0, 0, 0.18);
+  -moz-box-shadow: 10px 10px 5px -5px rgba(0, 0, 0, 0.18);
 }
 #see-more {
   width: 20%;
