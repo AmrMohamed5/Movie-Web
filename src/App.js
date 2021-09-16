@@ -39,9 +39,7 @@ function App() {
     <div className='container'>
     <Nav searchValue={searchValue} setSearch={setSearch} />
      <MovieList movies={movies}/>
-     <div className="d-grid gap-2 col-3 mx-auto">
-  <button onClick={fetchMore} className="btn btn-primary" type="button">See More</button>
-</div>
+     <button onClick={fetchMore} type="button" id='see-more' class="btn btn-primary">See More</button>
     </div>
   );
 }

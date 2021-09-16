@@ -23,3 +23,7 @@ code {
 .card {
   margin: 10px 0;
 }
+#see-more {
+  width: 20%;
+  margin: 5px auto;
+}
