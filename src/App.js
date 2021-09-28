@@ -55,7 +55,7 @@ function App() {
       </Route>
       <Route
         exact
-        path="/:title"
+        path="/movie/:title"
         render={({ match }) => (
           <Page movies={movies} title={match.params.title} />
         )}

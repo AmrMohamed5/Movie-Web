@@ -1,5 +1,4 @@
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -14,14 +13,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+/* Web Page */
 
-.container {
+section {
+  margin-top: 10px;
+}
+section .container {
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 .card {
-  margin: 5px 0;
   box-shadow: 10px 10px 5px -5px rgba(0, 0, 0, 0.18);
   -webkit-box-shadow: 10px 10px 5px -5px rgba(0, 0, 0, 0.18);
   -moz-box-shadow: 10px 10px 5px -5px rgba(0, 0, 0, 0.18);
@@ -31,6 +34,10 @@ code {
   margin: 10px auto;
   display: block;
   text-align: center;
+}
+/* nav bar */
+nav {
+  position: fixed;
 }
 /* login Section */
 .login {
