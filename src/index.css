@@ -26,7 +26,32 @@ code {
   -webkit-box-shadow: 10px 10px 5px -5px rgba(0, 0, 0, 0.18);
   -moz-box-shadow: 10px 10px 5px -5px rgba(0, 0, 0, 0.18);
 }
-#see-more {
-  width: 20%;
-  margin: 5px auto;
+#btn-more {
+  width: 15rem;
+  margin: 10px auto;
+  display: block;
+  text-align: center;
+}
+/* login Section */
+.login {
+  margin: 25vh auto;
+  width: 45vh;
+}
+.login h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.login button {
+  width: 100%;
+}
+.login Link {
+  text-decoration: none;
+}
+.login .input {
+  margin-top: 10px;
+}
+/* Sign up  */
+.sign-up {
+  width: 50vw;
+  margin: 20px auto;
 }

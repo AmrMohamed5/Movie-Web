@@ -1,24 +1,20 @@
-// Page Details for the movie 
-
-const Page = () => {
-    return ( 
-        <div className='container'>
-            <div className="card mb-3" style="max-width: 540px;">
-      <div className="row g-0">
-    <div className="col-md-4">
-      <img src="..." className="img-fluid rounded-start" alt="..." />
-    </div>
-    <div className="col-md-8">
-      <div className="card-body">
-        <h5 className="card-title">Card title</h5>
-        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+// Page Details for the movie
+const Page = ({ movies, id, title }) => {
+  const movie = movies.find((e) => e.title === title);
+  return (
+    <div className="container">
+      <div className="page">
+        <img
+          style={{ width: "50vh" }}
+          src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}
+          className=""
+          alt="movie"
+        />
+        <h1>{movie.title}</h1>
+        <h3>{movie.overview}</h3>
       </div>
     </div>
-  </div>
-</div>
-        </div>
-     );
-}
- 
+  );
+};
+
 export default Page;
