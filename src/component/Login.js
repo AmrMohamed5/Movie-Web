@@ -54,13 +54,4 @@ const Login = () => {
     </div>
   );
 };
-
 export default Login;
-
-{
-  /* <img
-src="/login.jpg"
-alt="myImage"
-style={{ width: "30%", height: "auto" }}
-/> */
-}

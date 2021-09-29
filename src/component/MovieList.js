@@ -4,13 +4,14 @@ const MovieList = ({ movies }) => {
   return (
     <section>
       <div className="container">
-        {movies.map((e) => {
+        {movies.map((e, index) => {
           return (
             <Link
-              to={`/movie/${e.title}`}
+              to={`/movie/${e.id}/${e.title}`}
               style={{ textDecoration: "none", color: "black" }}
             >
               <Movie
+                key={index}
                 title={e.title}
                 poster={e.backdrop_path}
                 overview={e.overview}

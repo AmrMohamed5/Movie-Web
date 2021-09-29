@@ -37,13 +37,13 @@ const Nav = ({ setSearch, searchValue, fetchMore }) => {
             <button
               style={{ margin: "0 5px" }}
               type="button"
-              class="btn btn-light"
+              className="btn btn-light"
             >
               Sign in
             </button>
           </Link>
           <Link to="signUp">
-            <button type="button" class="btn btn-light">
+            <button type="button" className="btn btn-light">
               Sign up
             </button>
           </Link>
