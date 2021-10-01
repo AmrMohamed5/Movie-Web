@@ -10,6 +10,7 @@ function App() {
   const [page, setPage] = useState(1);
   const [error, setError] = useState(null);
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(false);
 
   //fetch api
   function fetchMore() {
@@ -21,6 +22,7 @@ function App() {
       .then((res) => setMovies((prev) => [...prev, ...res.results]))
       .then((err) => setError(err));
     setPage((prev) => ++prev);
+    setLoading(true);
   }
 
   //handling search
@@ -44,12 +46,27 @@ function App() {
   return (
     <>
       <Nav searchValue={searchValue} setSearch={setSearch} />
-      <Route exact path="/">
-        <MovieList movies={movies} />
-        <button onClick={fetchMore} id="btn-more" className="btn btn-primary">
-          See More
-        </button>
-      </Route>
+      {loading == true ? (
+        <Route exact path="/">
+          <MovieList movies={movies} />
+          <button onClick={fetchMore} id="btn-more" className="btn btn-primary">
+            See More
+          </button>
+        </Route>
+      ) : (
+        <div
+          style={{ height: "80vh" }}
+          className="d-flex justify-content-center align-items-center"
+        >
+          <div
+            style={{ width: "3rem", height: "3rem" }}
+            className="spinner-border  text-secondary"
+            role="status"
+          >
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      )}
       <Route
         exact
         path="/movie/:id/:title"

@@ -4,6 +4,7 @@ function Page({ id }) {
   const [movie, setMovieDetails] = useState([]);
   const [movieVideos, setMovieVideos] = useState([]);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     fetchMovieDetails(id);
   }, []);
@@ -23,7 +24,10 @@ function Page({ id }) {
       .then((res) => res.json())
       .then((res) => setMovieVideos(res))
       .then((err) => setError(err));
+    setLoading(true);
   }
+  console.log(movie.production_countries);
+
   return (
     <div className="container">
       <div className="page">
@@ -38,28 +42,61 @@ function Page({ id }) {
             </div>
             <div className="col-md-8">
               <div className="card-body">
-                <h5 className="card-title">{movie.title}</h5>
+                <h2 className="card-title">{movie.title}</h2>
+                <h5>{movie.tagline} </h5>
                 <p className="card-text">{movie.overview}</p>
-                <p className="card-text">
+                <div className="card-text">
+                  <h6> {movie.vote_average} </h6>
                   <small className="text-muted">{movie.release_date}</small>
-                </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <hr />
-        {movieVideos.results != null && movieVideos.results.length != 0 ? (
-          <iframe
-            width="700"
-            height="400"
-            src={"https://www.youtube.com/embed/" + movieVideos.results[0].key}
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
+        <div className="producers">
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+        <hr />
+        {loading == true ? (
+          <div className="trailer">
+            {movieVideos.results != null && movieVideos.results.length != 0 ? (
+              <div>
+                <h2> {movieVideos.results[0].name} </h2>
+                <iframe
+                  width="700"
+                  height="400"
+                  src={
+                    "https://www.youtube.com/embed/" +
+                    movieVideos.results[0].key
+                  }
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            ) : (
+              <h6>Trailer not available right now ......</h6>
+            )}
+          </div>
         ) : (
-          <p></p>
+          <div
+            style={{ height: "80vh" }}
+            className="d-flex justify-content-center align-items-center"
+          >
+            <div
+              style={{ width: "3rem", height: "3rem" }}
+              className="spinner-border  text-secondary"
+              role="status"
+            >
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
         )}
       </div>
     </div>
