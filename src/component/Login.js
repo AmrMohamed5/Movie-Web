@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
-const Login = () => {
+const Login = ({ props }) => {
+  const hundleClick = () => {
+    props.history.push(`/`);
+  };
   return (
     <div className="container">
       <div className="login">
@@ -10,6 +13,7 @@ const Login = () => {
               Email address
             </label>
             <input
+              placeholder="Enter your Email@ "
               type="email"
               class="form-control"
               id="exampleInputEmail1"
@@ -40,13 +44,13 @@ const Login = () => {
               Remember Email
             </label>
           </div>
-          <button type="submit" class="btn btn-primary">
+          <button onClick={hundleClick} type="submit" class="btn btn-primary">
             Login
           </button>
         </form>
         <span>Don't have an account? </span>
         <h6 style={{ display: "inline" }}>
-          <Link style={{ textDecoration: "none", color: "black" }}>
+          <Link to="/signUp" style={{ textDecoration: "none", color: "black" }}>
             create a new account
           </Link>
         </h6>

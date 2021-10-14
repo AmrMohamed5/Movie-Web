@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Route } from "react-router";
+import { Redirect, Route, Switch } from "react-router";
 import MovieList from "./component/MovieList";
 import Nav from "./component/Nav";
 import Page from "./component/Page";
 import Login from "./component/Login";
 import CreateLogin from "./component/CreateLogin";
+import notFind from "./component/NotFind";
 function App() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
@@ -47,12 +48,13 @@ function App() {
     <>
       <Nav searchValue={searchValue} setSearch={setSearch} />
       {loading == true ? (
-        <Route exact path="/">
-          <MovieList movies={movies} />
-          <button onClick={fetchMore} id="btn-more" className="btn btn-primary">
-            See More
-          </button>
-        </Route>
+        <Route
+          exact
+          path="/"
+          render={(props) => (
+            <MovieList props={props} movies={movies} fetchMore={fetchMore} />
+          )}
+        ></Route>
       ) : (
         <div
           style={{ height: "80vh" }}
@@ -72,8 +74,10 @@ function App() {
         path="/movie/:id/:title"
         render={({ match }) => <Page id={match.params.id} />}
       />
-      <Route exact path="/login" component={Login} />
+      <Route exact path="/login" render={(props) => <Login props={props} />} />
       <Route exact path="/signUp" component={CreateLogin} />
+      <Route exact path="/notfind" component={notFind} />
+      {/* <Redirect to="/notfind" /> */}
     </>
   );
 }

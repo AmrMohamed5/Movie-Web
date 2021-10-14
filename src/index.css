@@ -7,6 +7,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: #ecf0f0;
 }
 
 code {
@@ -23,11 +24,43 @@ section .container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  background-color: white;
 }
+@media (max-width: 575.98px) {
+  section .container {
+    justify-content: center;
+  }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  section .container {
+    justify-content: center;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  section .container {
+    justify-content: space-around;
+  }
+}
+
 .card {
-  box-shadow: 10px 10px 5px -5px rgba(0, 0, 0, 0.18);
-  -webkit-box-shadow: 10px 10px 5px -5px rgba(0, 0, 0, 0.18);
-  -moz-box-shadow: 10px 10px 5px -5px rgba(0, 0, 0, 0.18);
+  width: 18rem;
+  cursor: pointer;
+  margin-bottom: 10px;
+  border: none;
+  height: fit-content;
+  position: relative;
+}
+.card .icons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 22px;
+}
+.card i {
+  color: #ffcc2f;
+}
+.card i p {
+  color: black;
 }
 #btn-more {
   width: 15rem;
