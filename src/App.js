@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
-import { Redirect, Route, Switch } from "react-router";
+import { Route } from "react-router";
 import MovieList from "./component/MovieList";
 import Nav from "./component/Nav";
 import Page from "./component/Page";
-import Login from "./component/Login";
-import CreateLogin from "./component/CreateLogin";
-import notFind from "./component/NotFind";
 function App() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
-  const [error, setError] = useState(null);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -20,8 +16,7 @@ function App() {
     )
       .then((res) => res.json())
       // when the result comes back with success here is what to do
-      .then((res) => setMovies((prev) => [...prev, ...res.results]))
-      .then((err) => setError(err));
+      .then((res) => setMovies((prev) => [...prev, ...res.results]));
     setPage((prev) => ++prev);
     setLoading(true);
   }
@@ -34,8 +29,7 @@ function App() {
         `https:api.themoviedb.org/3/search/movie?&api_key=41f62205eb96431e74d58bc8998a848d&query=${search}`
       )
         .then((res) => res.json())
-        .then((res) => setMovies(res.results))
-        .then((err) => setError(err));
+        .then((res) => setMovies(res.results));
       setSearch("");
     }
   };
@@ -47,7 +41,7 @@ function App() {
   return (
     <>
       <Nav searchValue={searchValue} setSearch={setSearch} />
-      {loading == true ? (
+      {loading === true ? (
         <Route
           exact
           path="/"
@@ -74,10 +68,6 @@ function App() {
         path="/movie/:id/:title"
         render={({ match }) => <Page id={match.params.id} />}
       />
-      <Route exact path="/login" render={(props) => <Login props={props} />} />
-      <Route exact path="/signUp" component={CreateLogin} />
-      <Route exact path="/notfind" component={notFind} />
-      {/* <Redirect to="/notfind" /> */}
     </>
   );
 }

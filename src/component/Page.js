@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 function Page({ id }) {
   const [movie, setMovieDetails] = useState([]);
   const [movieVideos, setMovieVideos] = useState([]);
-  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     fetchMovieDetails(id);
@@ -15,18 +14,15 @@ function Page({ id }) {
     )
       .then((res) => res.json())
       // when the result comes back with success here is what to do
-      .then((res) => setMovieDetails(res))
-      // if there is an error here what you have to do.
-      .then((err) => setError(err));
+      .then((res) => setMovieDetails(res));
+
     fetch(
       ` https://api.themoviedb.org/3/movie/${key}/videos?api_key=41f62205eb96431e74d58bc8998a848d&language=en-US`
     )
       .then((res) => res.json())
-      .then((res) => setMovieVideos(res))
-      .then((err) => setError(err));
+      .then((res) => setMovieVideos(res));
     setLoading(true);
   }
-  console.log(movie);
   const prod = movie.production_companies;
   const gener = movie.genres;
   const country = movie.production_countries;

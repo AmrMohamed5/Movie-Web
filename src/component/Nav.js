@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
-const Nav = ({ setSearch, searchValue, fetchMore }) => {
+const Nav = ({ setSearch, searchValue }) => {
+  const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
   return (
     <nav className="navbar container navbar-expand-lg navbar-dark bg-primary">
       <div className="container-fluid">
@@ -33,20 +35,27 @@ const Nav = ({ setSearch, searchValue, fetchMore }) => {
               aria-label="Search"
             />
           </form>
-          <Link to="login">
+          <div className="button-groups">
+            {isAuthenticated && (
+              <div>
+                <h6>Hello {user.name}</h6>
+                <button
+                  className="btn btn-light"
+                  type="button"
+                  onClick={() => logout()}
+                >
+                  Log out
+                </button>
+              </div>
+            )}
             <button
-              style={{ margin: "0 5px" }}
+              onClick={() => loginWithRedirect()}
               type="button"
               className="btn btn-light"
             >
-              Sign in
+              Log in
             </button>
-          </Link>
-          <Link to="signUp">
-            <button type="button" className="btn btn-light">
-              Sign up
-            </button>
-          </Link>
+          </div>
         </div>
       </div>
     </nav>
